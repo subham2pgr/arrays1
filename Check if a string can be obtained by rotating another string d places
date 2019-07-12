@@ -1,0 +1,68 @@
+#include <iostream>
+
+using namespace std;
+
+void ReverseArray(string &str, int left, int right){
+    char temp;
+    while(left<right){
+        temp = str[left];
+        str[left] = str[right];
+        str[right] = temp;
+        left++;
+        right--;
+    }
+    }
+bool RotateAndCheck(string &str1,string &str2,int d)
+{
+    if(str1.size() != str2.size()){
+        return false;
+    }
+    int string_size=str1.size();
+    string leftrotation,rightrotation;
+    bool leftrotation1=true;
+    bool rightrotation1=true;
+    for(int i=0;i<string_size; i++)
+    {
+        leftrotation.push_back(str1[i]);
+        rightrotation.push_back(str1[i]);
+    }
+    ReverseArray(leftrotation,0,d-1);
+    ReverseArray(leftrotation,d,string_size-1);
+    ReverseArray(leftrotation,0,string_size-1);
+    ReverseArray(rightrotation,0,string_size-d-1);
+    ReverseArray(rightrotation,string_size-d,string_size-1);
+    ReverseArray(rightrotation,0,string_size-1);
+    for(int i=0;i<string_size; i++)
+    {
+    if(leftrotation[i]!=str2[i])
+    {
+        leftrotation1=false;
+    }
+    if(rightrotation[i]!=str2[i])
+    {
+        rightrotation1=false;
+    }
+    if(leftrotation1 || rightrotation1)
+    {
+        return true;
+    }
+    
+}
+return false;
+}
+int main()
+{
+    string str1 = "abcdefg"; 
+    string str2 = "cdfdawb"; 
+  
+    // d is the rotating factor 
+    int d = 6;
+    d = d% str1.size();
+    if ( RotateAndCheck(str1,str2,d) ){
+        cout<<"Yes";
+    }    
+    else{
+        cout<<"No";
+    }    
+    return 0;
+}
