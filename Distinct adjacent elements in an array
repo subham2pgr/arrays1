@@ -1,0 +1,33 @@
+#include <iostream>
+#include<map>
+using namespace std;
+
+int distinctAdjacentElement(int a[],int n)
+{
+    map<int,int>mp;
+    for(int i=0;i<n;i++){
+        mp[a[i]]++;
+    }
+    int mx=0;
+    for(int i=0;i<n;i++){
+        if(mx<mp[a[i]]){
+            mx=mp[a[i]];
+        }
+    }
+    if(mx<=(n+1)/2){
+        cout<<"YES";
+    }
+    else{
+        cout<<"NO";
+    }    
+    
+    
+}
+    int main() 
+{ 
+    int a[] = { 1,1,2 }; 
+    // int a[] = { 7, 7, 7, 7 }; 
+    int n = sizeof(a) / sizeof(a[0]); 
+    distinctAdjacentElement(a, n); 
+    return 0; 
+}
