@@ -1,0 +1,42 @@
+Method-3: Using given assumptions.
+It is given that an array can be rotated any times and duplicates will appear side by side every time. So after rotating the first and last element will appear side by side.
+
+Check if the first and last element is equal. If yes then start traversing the elements between them.
+Check if the current element is equal to the element at immediate previous index. If yes, check the same for next element.
+If not, print the current element.
+
+#include <iostream>
+
+using namespace std;
+
+void occurredOnce(int arr[],int n){
+    int i=1;
+    int len=n;
+    if(arr[0]==arr[n-1]){
+        i=2;
+        len--;
+    }
+    for(;i<n;i++){
+        if(arr[i-1]==arr[i])
+        {
+            i++;
+        }
+        else{
+            cout<<arr[i-1];
+        }
+    }
+    if(arr[n-1]!=arr[0] && arr[n-1]!=arr[n-2]){
+        cout<<arr[n-1];
+    }
+}
+
+int main()
+{
+    int arr[] = { 7, 7, 8, 8, 9, 1, 1, 4, 2, 2 }; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+  
+    occurredOnce(arr, n); 
+  
+
+    return 0;
+}
