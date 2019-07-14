@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+bool isVowel(char ch){
+    return(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u');
+}
+int calcDiff(string str){
+    int count_vowel=0,count_cons=0,count_consec=0,hard=0,easy=0;
+    for(int i=0;i<str.length();i++){
+        if(str[i]!= ' ' && isVowel(tolower(str[i])))
+        {
+            count_vowel++;
+            count_consec=0;
+        }
+        else if(str[i]!=' '){
+            count_consec++;
+            count_cons++;
+        }
+        if(count_consec==4){
+            hard++;
+            while(i<str.length()&&str[i]!=' '){
+                i++;
+            }
+            count_vowel=0;
+            count_cons=0;
+            count_consec=0;
+        }
+        else if(i<str.length()&&(str[i]==' '||i==(str.length()-1))){
+            
+        if(count_cons > count_vowel){
+        hard++;
+        }
+        else{
+            easy++;
+        }
+        count_vowel=0;
+            count_cons=0;
+            count_consec=0;
+        }
+    }
+    return ((5*hard)+(3*easy));
+}
+
+int main()
+{
+    string str = "I am a geek"; 
+    string str2 = "We are geeks"; 
+    cout << calcDiff(str) << endl; 
+    cout << calcDiff(str2) << endl; 
+  
+    return 0;
+}
