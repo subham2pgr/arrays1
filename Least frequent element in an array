@@ -1,0 +1,29 @@
+
+
+#include<iostream>
+using namespace std;
+
+int leastFrequent(int arr[],int n)
+{
+    unordered_map<int,int>hash;
+    for (int i=0;i<n;i++){
+        hash[arr[i]]++;
+    }
+    int min=n+1;int res=0;
+    for(auto: hash){
+        if(min>i.second){
+            res=i.first;
+            min=i.second;
+        }
+    }
+    return res;
+}
+
+
+int main() 
+{ 
+    int arr[] = {1, 3, 2, 1, 2, 2, 3, 1}; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    cout << leastFrequent(arr, n); 
+    return 0; 
+}
